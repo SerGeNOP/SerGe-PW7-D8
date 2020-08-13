@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from tasks.models import TodoItem, Category
+import q
 
 
 def index(request):
@@ -30,7 +31,6 @@ def filter_tasks(tags_by_task):
 def tasks_by_cat(request, cat_slug=None):
     u = request.user
     tasks = TodoItem.objects.filter(owner=u).all()
-
     cat = None
     if cat_slug:
         cat = get_object_or_404(Category, slug=cat_slug)

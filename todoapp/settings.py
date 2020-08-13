@@ -72,7 +72,7 @@ def get_cache():
         for key in ['SERVERS', 'USERNAME', 'PASSWORD']
     )
     if not environment_ready:
-        cache = {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}
+        cache = {'default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}}
     else:
         servers = os.environ['MEMCACHIER_SERVERS']
         username = os.environ['MEMCACHIER_USERNAME']
