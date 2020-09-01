@@ -4,8 +4,8 @@ from django.urls import reverse
 
 
 class Category(models.Model):
-    slug = models.CharField(max_length=128)
-    name = models.CharField(max_length=256)
+    slug = models.CharField(max_length=128, verbose_name='Ссылка')
+    name = models.CharField(max_length=256, verbose_name='Категория')
 
     class Meta:
         verbose_name = 'Категория'
@@ -28,8 +28,8 @@ class TodoItem(models.Model):
 
     description = models.TextField("описание")
     is_completed = models.BooleanField("выполнено", default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Создано')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Обновлено')
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tasks"
     )
@@ -49,4 +49,6 @@ class TodoItem(models.Model):
         return reverse("tasks:details", args=[self.pk])
 
     def category_name(self):
-        return ",".join([str(p) for p in self.category.all()])
+        return ",".join([str(p.name) for p in self.category.all()])
+
+    category_name.short_description = "Категория"

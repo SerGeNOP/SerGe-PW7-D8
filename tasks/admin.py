@@ -11,3 +11,7 @@ class TodoItemAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('slug', 'name')
+
+
+admin.site.site_title = 'Администрирование списков дел'
+admin.site.site_header = 'Администрирование списков дел'
