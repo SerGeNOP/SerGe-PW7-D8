@@ -49,4 +49,4 @@ class TodoItem(models.Model):
         return reverse("tasks:details", args=[self.pk])
 
     def category_name(self):
-        return str(self.category.name)
+        return ",".join([str(p) for p in self.category.all()])
