@@ -48,5 +48,5 @@ class TodoItem(models.Model):
     def get_absolute_url(self):
         return reverse("tasks:details", args=[self.pk])
 
-    def category(self):
-        return str(self.category.lower())
+    def category_name(self):
+        return str(self.category.name)

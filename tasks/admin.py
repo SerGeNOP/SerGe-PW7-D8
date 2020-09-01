@@ -5,15 +5,9 @@ from tasks.models import TodoItem, Category
 
 @admin.register(TodoItem)
 class TodoItemAdmin(admin.ModelAdmin):
-    list_display = ('description', 'category', 'is_completed', 'created')
-
-    def category(self, instance):
-        return instance.category
+    list_display = ('description', 'category_name', 'is_completed', 'created')
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('slug', 'name')
-
-
-
